@@ -1,14 +1,11 @@
 <view class="container">
-  <!-- <view class="header">
-    <text>单词记忆</text>
-  </view> -->
+  <view class="upload">
+    <button bindtap="onUploadTap">上传词库文件</button>
+    <input type="file" id="fileInput" style="display:none" bindchange="onFileChange" />
+  </view>
   <view class="settings">
     <view class="setting-item">
-      <text>每日学习：</text>
-      <input type="number" value="{{dailyNewWordsCount}}" bindinput="onDailyNewWordsCountChange" />
-    </view>
-    <view class="setting-item">
-      <text>展示中文释义：</text>
+      <text>中文释义：</text>
       <switch checked="{{showTranslation}}" bindchange="onShowTranslationChange" />
     </view>
   </view>
@@ -24,10 +21,6 @@
         <radio value="both" /> 单词&例句
       </label>
     </radio-group>
-  </view>
-  <view class="upload">
-    <button bindtap="onUploadTap">上传词库文件</button>
-    <input type="file" id="fileInput" style="display:none" bindchange="onFileChange" />
   </view>
   <view class="content">
     <block wx:if="{{learningMode === 'word' || learningMode === 'both'}}">
