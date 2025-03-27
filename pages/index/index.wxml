@@ -5,7 +5,7 @@
   </view>
   <view class="settings">
     <view class="setting-item">
-      <text>中文释义：</text>
+      <text>展示中文释义：</text>
       <switch checked="{{showTranslation}}" bindchange="onShowTranslationChange" />
     </view>
   </view>
@@ -26,6 +26,7 @@
     <block wx:if="{{learningMode === 'word' || learningMode === 'both'}}">
       <view class="word">
         <text class="word-text">{{currentWord.word}}</text>
+        <text class="part-of-speech">{{currentWord.part_of_speech}}</text>
         <text class="phonetic">{{currentWord.phonetic}}</text>
         <text class="translation" wx:if="{{showTranslation}}">{{currentWord.translation}}</text>
       </view>
@@ -37,11 +38,11 @@
       </view>
     </block>
   </view>
+  <view class="progress">
+    <text>已掌握单词进度: {{masteredWordsCount}}/{{words.length}}</text>
+  </view>
   <view class="actions">
     <button class="action-button" bindtap="onNextWord">下一个单词</button>
     <button class="action-button" bindtap="onMarkAsMastered">标记为已掌握</button>
-  </view>
-  <view class="progress">
-    <text>已掌握单词进度: {{masteredWordsCount}}/{{words.length}}</text>
   </view>
 </view>

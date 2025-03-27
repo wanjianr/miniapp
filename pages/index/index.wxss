@@ -18,7 +18,7 @@
     color: #333;
 }
   
-.settings, .upload, .options, .content {
+.settings, .upload, .options, .content, .progress {
     margin-bottom: 20px;
     padding: 10px;
 }
@@ -42,19 +42,26 @@
   
 .word, .sentence {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+  
+.word-text, .part-of-speech, .phonetic, .translation, .example-sentence, .example-translation {
+    margin-bottom: 10px;
+    width: 100%;
 }
   
 .word-text {
     font-size: 26px;
     font-weight: bold;
     color: #444;
-    margin-bottom: 10px;
 }
   
-.phonetic {
+.part-of-speech, .phonetic {
     font-size: 18px;
     color: #666;
-    margin-bottom: 10px;
 }
   
 .translation, .example-sentence, .example-translation {
@@ -96,4 +103,8 @@
     margin-top: 20px;
     font-size: 16px;
     color: #888;
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    right: 0;
 }
