@@ -1,10 +1,10 @@
 <view class="container">
-  <view class="header">
+  <!-- <view class="header">
     <text>单词记忆</text>
-  </view>
+  </view> -->
   <view class="settings">
     <view class="setting-item">
-      <text>每日学习新单词数量：</text>
+      <text>每日学习：</text>
       <input type="number" value="{{dailyNewWordsCount}}" bindinput="onDailyNewWordsCountChange" />
     </view>
     <view class="setting-item">
@@ -15,13 +15,13 @@
   <view class="options">
     <radio-group class="radio-group" bindchange="onOptionChange">
       <label class="radio">
-        <radio value="word" checked /> 学习单词
+        <radio value="word" checked /> 单词
       </label>
       <label class="radio">
-        <radio value="sentence" /> 学习例句
+        <radio value="sentence" /> 例句
       </label>
       <label class="radio">
-        <radio value="both" /> 同时学习单词和例句
+        <radio value="both" /> 单词&例句
       </label>
     </radio-group>
   </view>
@@ -45,8 +45,8 @@
     </block>
   </view>
   <view class="actions">
-    <button bindtap="onNextWord">下一个单词</button>
-    <button bindtap="onMarkAsMastered">标记为已掌握</button>
+    <button class="action-button" bindtap="onNextWord">下一个单词</button>
+    <button class="action-button" bindtap="onMarkAsMastered">标记为已掌握</button>
   </view>
   <view class="progress">
     <text>已掌握单词进度: {{masteredWordsCount}}/{{words.length}}</text>
