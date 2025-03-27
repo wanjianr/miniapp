@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="header">
+    <text>单词记忆</text>
+  </view>
+  <view class="options">
+    <radio-group class="radio-group" bindchange="onOptionChange">
+      <label class="radio">
+        <radio value="word" checked /> 学习单词
+      </label>
+      <label class="radio">
+        <radio value="sentence" /> 学习例句
+      </label>
+      <label class="radio">
+        <radio value="both" /> 同时学习单词和例句
+      </label>
+    </radio-group>
+  </view>
+  <view class="upload">
+    <button bindtap="onUploadTap">上传词库文件</button>
+    <input type="file" id="fileInput" style="display:none" bindchange="onFileChange" />
+  </view>
+  <view class="content">
+    <block wx:if="{{learningMode === 'word' || learningMode === 'both'}}">
+      <view class="word">
+        <text class="word-text">{{currentWord.word}}</text>
+        <text class="phonetic">{{currentWord.phonetic}}</text>
+        <text class="translation" wx:if="{{showTranslation}}">{{currentWord.translation}}</text>
+      </view>
+    </block>
+    <block wx:if="{{learningMode === 'sentence' || learningMode === 'both'}}">
+      <view class="sentence">
+        <text class="example-sentence">{{currentWord.example_sentence}}</text>
+        <text class="example-translation" wx:if="{{showTranslation}}">{{currentWord.example_translation}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="actions">
+    <button bindtap="onNextWord">下一个单词</button>
+    <button bindtap="onMarkAsMastered">标记为已掌握</button>
+  </view>
+  <view class="progress">
+    <text>已掌握单词进度: {{masteredWordsCount}}/{{words.length}}</text>
+  </view>
+</view>
