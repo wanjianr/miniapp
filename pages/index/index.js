@@ -8,6 +8,7 @@ Page({
     currentIndex: 0, // 当前单词索引
     showTranslation: true, // 是否展示翻译
     masteredWordsCount: 0, // 已掌握单词数量
+    dailyNewWordsCount: 15 // 每日学习新单词数量
   },
 
   onLoad() {
@@ -36,6 +37,18 @@ Page({
   onOptionChange(e) {
     this.setData({
       learningMode: e.detail.value
+    });
+  },
+
+  onDailyNewWordsCountChange(e) {
+    this.setData({
+      dailyNewWordsCount: e.detail.value
+    });
+  },
+
+  onShowTranslationChange(e) {
+    this.setData({
+      showTranslation: e.detail.value
     });
   },
 

@@ -2,6 +2,16 @@
   <view class="header">
     <text>单词记忆</text>
   </view>
+  <view class="settings">
+    <view class="setting-item">
+      <text>每日学习新单词数量：</text>
+      <input type="number" value="{{dailyNewWordsCount}}" bindinput="onDailyNewWordsCountChange" />
+    </view>
+    <view class="setting-item">
+      <text>展示中文释义：</text>
+      <switch checked="{{showTranslation}}" bindchange="onShowTranslationChange" />
+    </view>
+  </view>
   <view class="options">
     <radio-group class="radio-group" bindchange="onOptionChange">
       <label class="radio">
