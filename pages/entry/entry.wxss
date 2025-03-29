@@ -4,11 +4,10 @@
   .form-item {
     margin-bottom: 15px;
   }
-  input, textarea {
+  input {
     border: 1px solid #ccc;
     padding: 5px;
     width: 100%;
-    margin-top: 5px;
   }
   button {
     background-color: #0081ff;
@@ -17,14 +16,5 @@
     width: 100%;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
-  }
-  .separator {
-    margin: 20px 0 10px;
-    font-weight: bold;
-  }
-  .btn-group button {
-    background-color: #00a65a;
-    margin-top: 15px;
   }
   

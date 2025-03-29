@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="mode-selector">
+    <radio-group bindchange="onModeChange">
+      <label><radio value="word" checked="{{mode==='word'}}" /> 单词</label>
+      <label><radio value="sentence" checked="{{mode==='sentence'}}" /> 例句</label>
+      <label><radio value="both" checked="{{mode==='both'}}" /> 单词+例句</label>
+    </radio-group>
+    <switch checked="{{showTranslation}}" bindchange="onToggleTranslation" />显示中文
+  </view>
+  
+  <view class="content-area">
+    <!-- 根据不同模式展示内容 -->
+    <block wx:if="{{currentWord}}">
+      <view wx:if="{{mode==='word' || mode==='both'}}" class="word">
+        <text>{{currentWord.word}}</text>
+        <text wx:if="{{showTranslation}}"> - {{currentWord.translation}}</text>
+      </view>
+      <view wx:if="{{mode==='sentence' || mode==='both'}}" class="sentence">
+        <text>{{currentWord.example_sentence}}</text>
+        <text wx:if="{{showTranslation}}"> - {{currentWord.example_translation}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <text>暂无复习内容</text>
+    </block>
+  </view>
+  
+  <view class="btn-group">
+    <button bindtap="prevWord">上一个</button>
+    <button bindtap="markMastered">已掌握</button>
+    <button bindtap="nextWord">下一个</button>
+  </view>
+</view>

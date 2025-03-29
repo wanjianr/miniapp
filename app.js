@@ -1,11 +1,7 @@
 App({
-    onLaunch() {
-      const words = wx.getStorageSync('words');
-      if (words) {
-        this.globalData.words = words;
-      }
-    },
     globalData: {
-      words: []
+      STORAGE_KEY: "wordList",
+      reviewIntervals: [0, 5, 30, 720, 1440, 2880]
     }
   });
+  

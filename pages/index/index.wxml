@@ -1,48 +1,18 @@
 <view class="container">
-  <view class="upload">
-    <button bindtap="onUploadTap">上传词库文件</button>
-    <input type="file" id="fileInput" style="display:none" bindchange="onFileChange" />
-  </view>
-  <view class="settings">
-    <view class="setting-item">
-      <text>展示中文释义：</text>
-      <switch checked="{{showTranslation}}" bindchange="onShowTranslationChange" />
-    </view>
-  </view>
-  <view class="options">
-    <radio-group class="radio-group" bindchange="onOptionChange">
-      <label class="radio">
-        <radio value="word" checked /> 单词
-      </label>
-      <label class="radio">
-        <radio value="sentence" /> 例句
-      </label>
-      <label class="radio">
-        <radio value="both" /> 单词&例句
-      </label>
-    </radio-group>
-  </view>
-  <view class="content">
-    <block wx:if="{{learningMode === 'word' || learningMode === 'both'}}">
-      <view class="word">
-        <text class="word-text">{{currentWord.word}}</text>
-        <text class="part-of-speech">{{currentWord.part_of_speech}}</text>
-        <text class="phonetic">{{currentWord.phonetic}}</text>
-        <text class="translation" wx:if="{{showTranslation}}">{{currentWord.translation}}</text>
-      </view>
-    </block>
-    <block wx:if="{{learningMode === 'sentence' || learningMode === 'both'}}">
-      <view class="sentence">
-        <text class="example-sentence">{{currentWord.example_sentence}}</text>
-        <text class="example-translation" wx:if="{{showTranslation}}">{{currentWord.example_translation}}</text>
-      </view>
-    </block>
-  </view>
-  <view class="progress">
-    <text>已掌握单词进度: {{masteredWordsCount}}/{{words.length}}</text>
-  </view>
-  <view class="actions">
-    <button class="action-button" bindtap="onNextWord">下一个单词</button>
-    <button class="action-button" bindtap="onMarkAsMastered">标记为已掌握</button>
+
+  <view class="separator">批量录入 JSON 文本</view>
+  <textarea 
+    placeholder="请粘贴 JSON 文本..."
+    auto-height
+    maxlength="10000"
+    value="{{jsonText}}"
+    bindinput="onJsonInput">
+</textarea>
+
+  <button bindtap="onBatchImport">批量录入</button>
+
+  <view class="btn-group">
+    <button bindtap="goToVocab">查看已录入的单词列表</button>
+    <button bindtap="goToStudy">进入学习单词页面</button>
   </view>
 </view>

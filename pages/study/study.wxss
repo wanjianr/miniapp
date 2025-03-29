@@ -1,0 +1,22 @@
+.container {
+    padding: 20px;
+    text-align: center;
+  }
+  .mode-selector {
+    margin-bottom: 20px;
+  }
+  .content-area {
+    border: 1px solid #ccc;
+    padding: 20px;
+    min-height: 150px;
+    margin-bottom: 20px;
+  }
+  .btn-group button {
+    margin: 0 10px;
+    background-color: #0081ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+  }
+  
