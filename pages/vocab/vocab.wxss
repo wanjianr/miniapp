@@ -18,6 +18,7 @@
     font-weight: bold;
   }
   
+  /* 单词列表项 */
   .list {
     margin: 0;
     padding: 0;
@@ -28,27 +29,24 @@
     border-bottom: 1px solid #e0e0e0;
   }
   
-  .list-item:last-child {
-    border-bottom: none;
-  }
-  
   /* 仅对已掌握的单词标记背景 */
   .list-item.mastered {
     background-color: #e8f5e9;
   }
   
-  /* 行容器 */
+  /* 行布局 */
   .row {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
   }
   
-  /* 左侧区域：序号和单词 */
+  /* 左侧：序号 + 单词，固定宽度，避免位移 */
   .left-part {
     display: flex;
     align-items: center;
-    flex: 0 0 auto;
+    flex: 0 0 120px;  /* 固定宽度，保证对齐 */
   }
   
   .index {
@@ -61,25 +59,28 @@
     font-size: 14px;
     font-weight: bold;
     color: #333;
+    white-space: nowrap; /* 确保单词不换行 */
   }
   
-  /* 中间区域：中文释义 */
+  /* 中间：中文释义，确保按钮区始终在右侧 */
   .mid-part {
     flex: 1;
     padding: 0 8px;
     font-size: 12px;
     color: #555;
     text-align: left;
+    min-width: 60px;
   }
   
-  /* 右侧区域：按钮组 */
+  /* 右侧：按钮组，确保右对齐 */
   .right-part {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
-    gap: 8px;
+    gap: 6px;
   }
   
+  /* 详情按钮 */
   .detail-btn {
     font-size: 12px;
     padding: 4px 6px;
@@ -89,6 +90,7 @@
     border-radius: 3px;
   }
   
+  /* 掌握状态按钮 */
   .toggle-btn {
     font-size: 12px;
     padding: 4px 6px;
@@ -98,17 +100,53 @@
     border-radius: 3px;
   }
   
-  /* 展开详情区域 */
+  /* 详情区域 */
   .details {
-    padding: 4px 12px;
+    width: 100%;
+    padding: 6px 12px;
     font-size: 12px;
     color: #555;
     background-color: #fafafa;
     border-left: 2px solid #0081ff;
-    margin-bottom: 4px;
+    margin-top: 2px;
   }
   
   .detail-line {
     margin-bottom: 2px;
+  }
+  
+  .vocab-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10rpx 20rpx;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .word {
+    width: 200rpx;  /* 固定宽度，防止内容变动时影响对齐 */
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  .translation {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 20rpx;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10rpx; /* 按钮间距 */
+  }
+  
+  .details {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 10rpx;
+    border-radius: 10rpx;
+    margin-top: 10rpx;
   }
   
