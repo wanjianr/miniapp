@@ -7,13 +7,13 @@ Page({
   // 单个单词录入
   onSingleSubmit(e) {
     const formData = e.detail.value;
+    // 新录入的单词数据添加艾宾浩斯复习相关字段
     const newWord = {
       ...formData,
       mastered: false,
-      intervalIndex: 0, // 初始复习计划索引
-      nextReview: Date.now()  // 立即开始复习
+      intervalIndex: 0,
+      nextReview: Date.now()
     };
-    const app = getApp();
     let wordList = wx.getStorageSync(app.globalData.STORAGE_KEY) || [];
     wordList.push(newWord);
     wx.setStorageSync(app.globalData.STORAGE_KEY, wordList);
@@ -21,9 +21,9 @@ Page({
       title: '录入成功',
       icon: 'success'
     });
-    // 清空表单（如果需要，可调用 form.reset() ）
+    // 可选择清空表单或跳转至其他页面
   },
-  // 更新 jsonText 数据绑定
+  // 绑定批量导入 textarea 的输入
   onJsonInput(e) {
     this.setData({ jsonText: e.detail.value });
   },
@@ -43,15 +43,13 @@ Page({
       });
       return;
     }
-    // 给每个单词增加复习计划相关字段
+    // 给每个单词增加复习相关字段
     words = words.map(item => ({
       ...item,
       mastered: false,
       intervalIndex: 0,
       nextReview: Date.now()
     }));
-    // 读取现有数据并合并
-    const app = getApp();
     let wordList = wx.getStorageSync(app.globalData.STORAGE_KEY) || [];
     wordList = wordList.concat(words);
     wx.setStorageSync(app.globalData.STORAGE_KEY, wordList);

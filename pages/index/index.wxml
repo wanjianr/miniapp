@@ -1,16 +1,15 @@
 <view class="container">
 
+  <!-- 批量导入 -->
   <view class="separator">批量录入 JSON 文本</view>
-  <textarea 
-    placeholder="请粘贴 JSON 文本..."
-    auto-height
-    maxlength="10000"
-    value="{{jsonText}}"
-    bindinput="onJsonInput">
-</textarea>
-
+  <textarea placeholder='请粘贴 JSON 文本，示例：&#10;[{"word":"abundant","part_of_speech":"adj.","phonetic":"/əˈbʌndənt/","translation":"大量的；丰富的","example_sentence":"Water is abundant in this region.","example_translation":"这个地区水资源丰富。"}]' 
+            auto-height
+            maxlength="10000"
+            value="{{jsonText}}"
+            bindinput="onJsonInput"></textarea>
   <button bindtap="onBatchImport">批量录入</button>
 
+  <!-- 页面跳转按钮 -->
   <view class="btn-group">
     <button bindtap="goToVocab">查看已录入的单词列表</button>
     <button bindtap="goToStudy">进入学习单词页面</button>

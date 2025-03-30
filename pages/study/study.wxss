@@ -1,22 +1,121 @@
-.container {
-    padding: 20px;
+/* 整体页面容器，背景渐变色 */
+.study-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30rpx 20rpx;
+    background: linear-gradient(to bottom, #eef5ff, #d2e3fc);
+    min-height: 100vh;
+  }
+  
+  /* 模式选择区域 */
+  .mode-selector {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+    padding: 0 10rpx;
+  }
+  
+  .radio-label {
+    margin-right: 10rpx;
+    font-size: 28rpx;
+    color: #333;
+  }
+  
+  .switch-container {
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #333;
+  }
+  
+  /* 内容展示区域 */
+  .content-area {
+    flex: 1;
+    width: 90%;
+    background-color: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+    padding: 30rpx;
+    text-align: left;
+    margin-bottom: 30rpx;
+  }
+  
+  /* 行间距统一 */
+  .line {
+    margin-bottom: 15rpx;
+  }
+  
+  /* 单词、音标、释义、例句样式 */
+  .word {
+    font-size: 60rpx;
+    font-weight: bold;
+    color: #333;
     text-align: center;
   }
-  .mode-selector {
-    margin-bottom: 20px;
+  
+  .pronunciation {
+    font-size: 32rpx;
+    color: #666;
+    text-align: center;
   }
-  .content-area {
-    border: 1px solid #ccc;
-    padding: 20px;
-    min-height: 150px;
-    margin-bottom: 20px;
+  
+  .definition {
+    font-size: 36rpx;
+    color: #444;
+    text-align: center;
   }
-  .btn-group button {
-    margin: 0 10px;
-    background-color: #0081ff;
-    color: white;
-    padding: 10px 20px;
+  
+  .example-sentence {
+    font-size: 28rpx;
+    color: #555;
+    text-align: left;
+  }
+  
+  .example-translation {
+    font-size: 26rpx;
+    color: #777;
+    text-align: left;
+    margin-top: 10rpx;
+  }
+  
+  /* 无复习单词提示 */
+  .no-word {
+    font-size: 28rpx;
+    color: #888;
+    text-align: center;
+  }
+  
+  /* 操作按钮区域 */
+  .action-buttons {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10rpx;
+  }
+  
+  button {
+    width: 45%;
+    font-size: 32rpx;
+    padding: 20rpx;
+    border-radius: 12rpx;
     border: none;
-    border-radius: 5px;
+  }
+  
+  .mastered {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .proficient {
+    background-color: #0e0c0d;
+    color: #fff;
+  }
+
+  .not-mastered {
+    background-color: #FF5722;
+    color: #fff;
   }
   

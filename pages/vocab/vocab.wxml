@@ -3,31 +3,28 @@
     <text class="title">单词词库</text>
   </view>
   <view class="list">
-    <block wx:for="{{wordList}}" wx:key="index">
-      <!-- 单词行 -->
+    <block wx:for="{{wordList}}" wx:key="word">
       <view class="list-item {{item.mastered ? 'mastered' : ''}}">
-        <view class="row">
-          <!-- 左侧：序号和单词 -->
-          <view class="left-part">
-            <text class="index">{{index + 1}}.</text>
-            <text class="word">{{item.word}}</text>
-          </view>
-          <!-- 中间：中文释义（仅当详情未展开时显示） -->
-          <view class="mid-part" wx:if="{{!item.expanded}}">
-            <text class="translation">{{item.translation}}</text>
-          </view>
-          <!-- 右侧：按钮 -->
-          <view class="right-part">
-            <button data-word="{{item.word}}" bindtap="toggleDetails" class="detail-btn">
-              {{item.expanded ? '收起详情' : '查看详情'}}
-            </button>
-            <button data-word="{{item.word}}" bindtap="toggleMastered" class="toggle-btn">
-              {{item.mastered ? '已掌握' : '未掌握'}}
-            </button>
-          </view>
+        <!-- 左侧：序号 + 单词 -->
+        <view class="left-part">
+          <text class="index">{{index + 1}}.</text>
+          <text class="word">{{item.word}}</text>
+        </view>
+        <!-- 中间：中文释义 -->
+        <view class="mid-part">
+          <text class="translation">{{item.translation}}</text>
+        </view>
+        <!-- 右侧：操作按钮 -->
+        <view class="right-part">
+          <button data-word="{{item.word}}" bindtap="toggleDetails" class="detail-btn">
+            {{item.expanded ? '收起详情' : '查看详情'}}
+          </button>
+          <button data-word="{{item.word}}" bindtap="toggleMastered" class="toggle-btn">
+            {{item.mastered ? '已掌握' : '未掌握'}}
+          </button>
         </view>
       </view>
-      <!-- 展开详情区域：各属性独占一行 -->
+      <!-- 展开详情区域 -->
       <view wx:if="{{item.expanded}}" class="details">
         <view class="detail-line"><text>词性：{{item.part_of_speech}}</text></view>
         <view class="detail-line"><text>音标：{{item.phonetic}}</text></view>

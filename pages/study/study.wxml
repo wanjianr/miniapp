@@ -1,33 +1,86 @@
-<view class="container">
+<view class="study-container">
+  <!-- 模式选择区域 -->
   <view class="mode-selector">
     <radio-group bindchange="onModeChange">
-      <label><radio value="word" checked="{{mode==='word'}}" /> 单词</label>
-      <label><radio value="sentence" checked="{{mode==='sentence'}}" /> 例句</label>
-      <label><radio value="both" checked="{{mode==='both'}}" /> 单词+例句</label>
+      <label class="radio-label">
+        <radio value="word" checked="{{mode==='word'}}" /> 单词
+      </label>
+      <label class="radio-label">
+        <radio value="sentence" checked="{{mode==='sentence'}}" /> 例句
+      </label>
+      <label class="radio-label">
+        <radio value="both" checked="{{mode==='both'}}" /> 单词+例句
+      </label>
     </radio-group>
-    <switch checked="{{showTranslation}}" bindchange="onToggleTranslation" />显示中文
+    <view class="switch-container">
+      <text>显示中文</text>
+      <switch checked="{{showTranslation}}" bindchange="onToggleTranslation" />
+    </view>
   </view>
-  
+
+  <!-- 学习内容展示区域 -->
   <view class="content-area">
-    <!-- 根据不同模式展示内容 -->
-    <block wx:if="{{currentWord}}">
-      <view wx:if="{{mode==='word' || mode==='both'}}" class="word">
-        <text>{{currentWord.word}}</text>
-        <text wx:if="{{showTranslation}}"> - {{currentWord.translation}}</text>
+    <!-- 单词模式 -->
+    <block wx:if="{{currentWord && mode==='word'}}">
+      <view class="line">
+        <text class="word">{{currentWord.word}}</text>
       </view>
-      <view wx:if="{{mode==='sentence' || mode==='both'}}" class="sentence">
-        <text>{{currentWord.example_sentence}}</text>
-        <text wx:if="{{showTranslation}}"> - {{currentWord.example_translation}}</text>
+      <view class="line">
+        <text class="pronunciation">[{{currentWord.phonetic}}] - {{currentWord.part_of_speech}}</text>
       </view>
+      <block wx:if="{{showTranslation}}">
+        <view class="line">
+          <text class="definition">{{currentWord.translation}}</text>
+        </view>
+      </block>
     </block>
-    <block wx:else>
-      <text>暂无复习内容</text>
+
+    <!-- 例句模式 -->
+    <block wx:elif="{{currentWord && mode==='sentence'}}">
+      <view class="line">
+        <text class="example-sentence">{{currentWord.example_sentence}}</text>
+      </view>
+      <block wx:if="{{showTranslation}}">
+        <view class="line">
+          <text class="example-translation">{{currentWord.example_translation}}</text>
+        </view>
+      </block>
+    </block>
+
+    <!-- 组合模式 -->
+    <block wx:elif="{{currentWord && mode==='both'}}">
+      <view class="line">
+        <text class="word">{{currentWord.word}}</text>
+      </view>
+      <view class="line">
+        <text class="pronunciation">[{{currentWord.phonetic}}] - {{currentWord.part_of_speech}}</text>
+      </view>
+      <block wx:if="{{showTranslation}}">
+        <view class="line">
+          <text class="definition">{{currentWord.translation}}</text>
+        </view>
+      </block>
+      <view class="line">
+        <text class="example-sentence">{{currentWord.example_sentence}}</text>
+      </view>
+      <block wx:if="{{showTranslation}}">
+        <view class="line">
+          <text class="example-translation">{{currentWord.example_translation}}</text>
+        </view>
+      </block>
+    </block>
+
+    <block wx:if="{{!currentWord}}">
+      <view class="line">
+        <text class="no-word">当前暂无复习单词，请录入或等待复习计划生效</text>
+      </view>
     </block>
   </view>
-  
-  <view class="btn-group">
-    <button bindtap="prevWord">上一个</button>
-    <button bindtap="markMastered">已掌握</button>
-    <button bindtap="nextWord">下一个</button>
+
+  <!-- 操作按钮区域 -->
+  <view class="action-buttons" wx:if="{{currentWord}}">
+    <button class="not-mastered" bindtap="handleReview" data-mastered="false">不认识</button>
+    <button class="proficient" bindtap="handleReview" data-mastered="proficient">熟练掌握</button>
+    <button class="mastered" bindtap="handleReview" data-mastered="true">掌握</button>
   </view>
 </view>
