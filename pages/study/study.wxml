@@ -1,26 +1,16 @@
 <view class="study-container">
-  <!-- 模式选择区域 -->
-  <view class="mode-selector">
-    <radio-group bindchange="onModeChange">
-      <label class="radio-label">
-        <radio value="word" checked="{{mode==='word'}}" /> 单词
-      </label>
-      <label class="radio-label">
-        <radio value="sentence" checked="{{mode==='sentence'}}" /> 例句
-      </label>
-      <label class="radio-label">
-        <radio value="both" checked="{{mode==='both'}}" /> 单词+例句
-      </label>
-    </radio-group>
-    <view class="switch-container">
-      <text>显示中文</text>
-      <switch checked="{{showTranslation}}" bindchange="onToggleTranslation" />
-    </view>
+  <!-- 自定义 Tab 样式替换 radio-group -->
+  <view class="tab-container">
+    <!-- 点击时调用 onModeChangeTab，data-mode 传递对应模式 -->
+    <view class="tab-item {{mode==='word' ? 'active' : ''}}" data-mode="word" bindtap="onModeChangeTab">单词</view>
+    <view class="tab-item {{mode==='sentence' ? 'active' : ''}}" data-mode="sentence" bindtap="onModeChangeTab">例句</view>
+    <view class="tab-item {{mode==='both' ? 'active' : ''}}" data-mode="both" bindtap="onModeChangeTab">单词+例句</view>
   </view>
+
+
 
   <!-- 学习内容展示区域 -->
   <view class="content-area">
-    <!-- 单词模式 -->
     <block wx:if="{{currentWord && mode==='word'}}">
       <view class="line">
         <text class="word">{{currentWord.word}}</text>
@@ -47,7 +37,6 @@
       </block>
     </block>
 
-    <!-- 组合模式 -->
     <block wx:elif="{{currentWord && mode==='both'}}">
       <view class="line">
         <text class="word">{{currentWord.word}}</text>
@@ -96,5 +85,13 @@
   <view class="reorder-button">
     <button class="left-mode" bindtap="reorderButtons" display-mode="left">Left</button>
     <button class="right-mode" bindtap="reorderButtons" display-mode="right">Right</button>
+  </view>
+
+  <!-- 自定义切换按钮：将“显示中文”文字嵌入按钮中 -->
+  <!-- 切换按钮容器 -->
+  <view class="switch-wrapper">
+    <view class="custom-switch {{showTranslation ? 'active' : ''}}" bindtap="toggleTranslation">
+      <text class="switch-text">{{showTranslation ? '中文：开' : '中文：关'}}</text>
+    </view>
   </view>
 </view>

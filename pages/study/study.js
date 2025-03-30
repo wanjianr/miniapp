@@ -13,10 +13,11 @@ Page({
     this.loadReviewList();
   },
 
-  // 模式切换
-  onModeChange(e) {
+  // 新增方法：点击 Tab 切换模式
+  onModeChangeTab(e) {
+    const selectedMode = e.currentTarget.dataset.mode;
     this.setData({
-      mode: e.detail.value
+      mode: selectedMode
     });
   },
 
@@ -107,5 +108,12 @@ Page({
     this.setData({
         buttonOrder: newOrder
       });
-  }
+  },
+
+    // 自定义切换按钮方法，切换显示中文状态
+    toggleTranslation() {
+        this.setData({
+          showTranslation: !this.data.showTranslation
+        });
+      }
 });

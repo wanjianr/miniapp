@@ -12,7 +12,6 @@
   .mode-selector {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 20rpx;
     padding: 0 10rpx;
@@ -104,7 +103,7 @@
     justify-content: space-between;
     gap: 10rpx;
     position: relative; /* 相对定位 */
-    top: 200rpx; /* 向下调整按钮位置 */
+    top: 300rpx; /* 向下调整按钮位置 */
   }
   
   button {
@@ -129,4 +128,83 @@
     background-color: #FF5722;
     color: #fff;
   }
+  
+/* 模式选择区域整体样式 */
+.mode-selector {
+    width: 100%;
+    padding: 10rpx;
+    background-color: #f8f9fa;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.1);
+  }
+  
+  /* Tab 容器：水平排列 */
+  .tab-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10rpx;
+  }
+  
+  /* 每个 Tab 按钮样式 */
+  .tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 20rpx 0;  /* 增加内边距使按钮更大 */
+    margin: 0 5rpx;
+    font-size: 22rpx;    /* 调整字体大小 */
+    color: #333;
+    background-color: #e0e0e0;
+    border-radius: 8rpx;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  /* 激活状态的 Tab */
+  .tab-item.active {
+    background-color: #007aff;
+    color: #fff;
+  }
+  
+/* 自定义切换按钮样式 */
+.custom-switch {
+    width: 200rpx;          /* 调整按钮宽度 */
+    height: 50rpx;          /* 调整按钮高度 */
+    background-color: #e0e0e0; /* 关闭状态背景色 */
+    border-radius: 15rpx;    /* 圆角效果 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rpx;
+    transition: background-color 0.2s;
+  }
+  
+  /* 开启状态的切换按钮 */
+  .custom-switch.active {
+    background-color: #063d3f; /* 开启状态背景色 */
+  }
+  
+  /* 切换按钮内部文字样式 */
+  .switch-text {
+    font-size: 28rpx;       /* 调整文字大小 */
+    color: #333;            /* 关闭状态文字颜色 */
+    transition: color 0.2s;
+  }
+  
+  /* 当按钮处于 active 状态时，文字颜色调整为白色 */
+  .custom-switch.active .switch-text {
+    color: #fff;
+  }
+
+  /* 切换按钮容器，居中显示 */
+.switch-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;   /* 居中排列 */
+    margin-top: 350rpx;          /* 根据需要调整与上面内容的间距 */
+  }
+  
   
