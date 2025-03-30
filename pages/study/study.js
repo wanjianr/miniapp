@@ -5,7 +5,8 @@ Page({
     mode: "word",            // 学习模式：word, sentence, both
     showTranslation: false,  // 是否显示中文
     reviewList: [],          // 当天需要复习的单词列表
-    currentWord: null        // 当前展示的单词
+    currentWord: null,        // 当前展示的单词
+    buttonOrder: ['not-mastered', 'mastered', 'proficient'] // 初始按钮顺序
   },
 
   onLoad() {
@@ -98,5 +99,13 @@ Page({
         this.setData({ currentWord: null });
       }
     }
+  },
+
+  reorderButtons(e) {
+    // 反转按钮顺序
+    let newOrder = [...this.data.buttonOrder].reverse();
+    this.setData({
+        buttonOrder: newOrder
+      });
   }
 });

@@ -31,16 +31,17 @@
     color: #333;
   }
   
-  /* 内容展示区域 */
-  .content-area {
-    flex: 1;
-    width: 90%;
-    background-color: #fff;
-    border-radius: 10rpx;
-    box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
-    padding: 30rpx;
-    text-align: left;
-    margin-bottom: 30rpx;
+/* 内容展示区域 */
+.content-area {
+     /* flex: 1; 弹性盒子布局中的伸缩比例，使该区域占据剩余空间 */
+    height: 500rpx;
+    width: 90%; /* 宽度为父元素宽度的 90% */
+    background-color: #fff; /* 背景颜色为白色 */
+    border-radius: 10rpx; /* 圆角半径为 10rpx */
+    box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1); /* 阴影效果，水平偏移 0，垂直偏移 4rpx，模糊半径 12rpx，颜色为 rgba(0, 0, 0, 0.1) */
+    padding: 30rpx; /* 内边距为 30rpx */
+    text-align: left; /* 文本左对齐 */
+    margin-bottom: 30rpx; /* 下外边距为 30rpx */
   }
   
   /* 行间距统一 */
@@ -94,6 +95,16 @@
     display: flex;
     justify-content: space-between;
     gap: 10rpx;
+  }
+
+    /* 调整顺序按钮样式 */
+.reorder-button {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10rpx;
+    position: relative; /* 相对定位 */
+    top: 200rpx; /* 向下调整按钮位置 */
   }
   
   button {

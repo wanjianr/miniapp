@@ -79,8 +79,22 @@
 
   <!-- 操作按钮区域 -->
   <view class="action-buttons" wx:if="{{currentWord}}">
-    <button class="not-mastered" bindtap="handleReview" data-mastered="false">不认识</button>
-    <button class="proficient" bindtap="handleReview" data-mastered="proficient">熟练掌握</button>
+    <block wx:for="{{buttonOrder}}" wx:key="*this">
+      <button
+        class="{{item}}"
+        bindtap="handleReview"
+        data-mastered="{{item === 'mastered' ? true : item === 'proficient' ? 'proficient' : false}}"
+      >
+        {{item === 'not-mastered' ? '不认识' : item === 'mastered' ? '掌握' : '熟练掌握'}}
+      </button>
+    </block>
+    <!-- <button class="not-mastered" bindtap="handleReview" data-mastered="false">不认识</button>
     <button class="mastered" bindtap="handleReview" data-mastered="true">掌握</button>
+    <button class="proficient" bindtap="handleReview" data-mastered="proficient">熟练掌握</button> -->
+  </view>
+
+  <view class="reorder-button">
+    <button class="left-mode" bindtap="reorderButtons" display-mode="left">Left</button>
+    <button class="right-mode" bindtap="reorderButtons" display-mode="right">Right</button>
   </view>
 </view>
