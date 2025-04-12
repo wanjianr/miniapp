@@ -2,7 +2,7 @@ const app = getApp();
 
 Page({
   data: {
-    mode: "word",            // 学习模式：word, sentence, both
+    mode: "both",            // 学习模式：word, sentence, both
     showTranslation: false,  // 是否显示中文
     reviewList: [],          // 当天需要复习的单词列表
     currentWord: null,        // 当前展示的单词

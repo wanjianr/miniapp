@@ -69,13 +69,13 @@
   }
   
   .example-sentence {
-    font-size: 30rpx;
+    font-size: 35rpx;
     color: rgb(0, 0, 0);
     text-align: left;
   }
   
   .example-translation {
-    font-size: 28rpx;
+    font-size: 35rpx;
     color: rgb(163, 162, 162);
     text-align: left;
     margin-top: 10rpx;
