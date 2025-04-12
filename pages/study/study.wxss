@@ -57,26 +57,26 @@
   }
   
   .pronunciation {
-    font-size: 32rpx;
-    color: #666;
+    font-size: 35rpx;
+    color: rgb(119, 36, 36);
     text-align: center;
   }
   
   .definition {
     font-size: 36rpx;
-    color: #444;
+    color: rgb(163, 162, 162);
     text-align: center;
   }
   
   .example-sentence {
-    font-size: 28rpx;
-    color: #555;
+    font-size: 30rpx;
+    color: rgb(0, 0, 0);
     text-align: left;
   }
   
   .example-translation {
-    font-size: 26rpx;
-    color: #777;
+    font-size: 28rpx;
+    color: rgb(163, 162, 162);
     text-align: left;
     margin-top: 10rpx;
   }
@@ -103,7 +103,7 @@
     justify-content: space-between;
     gap: 10rpx;
     position: relative; /* 相对定位 */
-    top: 300rpx; /* 向下调整按钮位置 */
+    top: 400rpx; /* 向下调整按钮位置 */
   }
   
   button {
@@ -171,16 +171,16 @@
   
 /* 自定义切换按钮样式 */
 .custom-switch {
-    width: 200rpx;          /* 调整按钮宽度 */
-    height: 50rpx;          /* 调整按钮高度 */
+    width: 260rpx;          /* 调整按钮宽度 */
+    height: 260rpx;          /* 调整按钮高度 */
     background-color: #e0e0e0; /* 关闭状态背景色 */
     border-radius: 15rpx;    /* 圆角效果 */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 10rpx;
-    transition: background-color 0.2s;
-  }
+    border-radius: 50%; /* 圆形关键，50% 表示完全圆形 */
+    transition: all 0.3s; /* 平滑过渡效果 */  }
   
   /* 开启状态的切换按钮 */
   .custom-switch.active {
@@ -189,7 +189,7 @@
   
   /* 切换按钮内部文字样式 */
   .switch-text {
-    font-size: 28rpx;       /* 调整文字大小 */
+    font-size: 30rpx;       /* 调整文字大小 */
     color: #333;            /* 关闭状态文字颜色 */
     transition: color 0.2s;
   }
@@ -204,7 +204,7 @@
     width: 100%;
     display: flex;
     justify-content: center;   /* 居中排列 */
-    margin-top: 350rpx;          /* 根据需要调整与上面内容的间距 */
+    margin-top: -50rpx;          /* 根据需要调整与上面内容的间距 */
   }
-  
+
   

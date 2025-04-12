@@ -2,12 +2,10 @@
   <!-- 自定义 Tab 样式替换 radio-group -->
   <view class="tab-container">
     <!-- 点击时调用 onModeChangeTab，data-mode 传递对应模式 -->
-    <view class="tab-item {{mode==='word' ? 'active' : ''}}" data-mode="word" bindtap="onModeChangeTab">单词</view>
-    <view class="tab-item {{mode==='sentence' ? 'active' : ''}}" data-mode="sentence" bindtap="onModeChangeTab">例句</view>
-    <view class="tab-item {{mode==='both' ? 'active' : ''}}" data-mode="both" bindtap="onModeChangeTab">单词+例句</view>
+    <view class="tab-item {{mode==='both' ? 'active' : ''}}" data-mode="both" bindtap="onModeChangeTab">All</view>
+    <view class="tab-item {{mode==='word' ? 'active' : ''}}" data-mode="word" bindtap="onModeChangeTab">Word</view>
+    <view class="tab-item {{mode==='sentence' ? 'active' : ''}}" data-mode="sentence" bindtap="onModeChangeTab">Sentence</view>
   </view>
-
-
 
   <!-- 学习内容展示区域 -->
   <view class="content-area">
@@ -16,7 +14,7 @@
         <text class="word">{{currentWord.word}}</text>
       </view>
       <view class="line">
-        <text class="pronunciation">[{{currentWord.phonetic}}] - {{currentWord.part_of_speech}}</text>
+        <text class="pronunciation">{{currentWord.phonetic}} - {{currentWord.part_of_speech}}</text>
       </view>
       <block wx:if="{{showTranslation}}">
         <view class="line">
@@ -42,7 +40,7 @@
         <text class="word">{{currentWord.word}}</text>
       </view>
       <view class="line">
-        <text class="pronunciation">[{{currentWord.phonetic}}] - {{currentWord.part_of_speech}}</text>
+        <text class="pronunciation">{{currentWord.phonetic}} - {{currentWord.part_of_speech}}</text>
       </view>
       <block wx:if="{{showTranslation}}">
         <view class="line">
@@ -61,7 +59,7 @@
 
     <block wx:if="{{!currentWord}}">
       <view class="line">
-        <text class="no-word">当前暂无复习单词，请录入或等待复习计划生效</text>
+        <text class="no-word">There are currently no review words. Please enter them or wait for the review plan to take effect.</text>
       </view>
     </block>
   </view>
@@ -74,24 +72,20 @@
         bindtap="handleReview"
         data-mastered="{{item === 'mastered' ? true : item === 'proficient' ? 'proficient' : false}}"
       >
-        {{item === 'not-mastered' ? '不认识' : item === 'mastered' ? '掌握' : '熟练掌握'}}
+        {{item === 'not-mastered' ? 'Strange' : item === 'mastered' ? 'Mastered' : 'Proficient'}}
       </button>
     </block>
-    <!-- <button class="not-mastered" bindtap="handleReview" data-mastered="false">不认识</button>
-    <button class="mastered" bindtap="handleReview" data-mastered="true">掌握</button>
-    <button class="proficient" bindtap="handleReview" data-mastered="proficient">熟练掌握</button> -->
   </view>
 
   <view class="reorder-button">
-    <button class="left-mode" bindtap="reorderButtons" display-mode="left">Left</button>
-    <button class="right-mode" bindtap="reorderButtons" display-mode="right">Right</button>
+    <button class="left-mode" bindtap="reorderButtons" display-mode="left">Reorder</button>
   </view>
 
   <!-- 自定义切换按钮：将“显示中文”文字嵌入按钮中 -->
   <!-- 切换按钮容器 -->
   <view class="switch-wrapper">
     <view class="custom-switch {{showTranslation ? 'active' : ''}}" bindtap="toggleTranslation">
-      <text class="switch-text">{{showTranslation ? '中文：开' : '中文：关'}}</text>
+      <text class="switch-text">Translate</text>
     </view>
   </view>
 </view>
