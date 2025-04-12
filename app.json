@@ -5,7 +5,7 @@
       "pages/vocab/vocab"
     ],
     "window": {
-      "navigationBarTitleText": "IELTS",
+      "navigationBarTitleText": "IELTS 1.0",
       "navigationBarTextStyle": "white",
       "navigationBarBackgroundColor": "#0081ff"
     }
