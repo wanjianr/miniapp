@@ -1,7 +1,7 @@
 <view class="container">
 
   <!-- 批量导入 -->
-  <view class="separator">批量录入 JSON 文本</view>
+  <view class="separator">Batch Import Vocabulary</view>
   <textarea placeholder='input new word' 
             auto-height
             maxlength="10000"

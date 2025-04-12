@@ -31,7 +31,6 @@
         <view class="detail-line"><text>中文释义：{{item.translation}}</text></view>
         <view class="detail-line"><text>例句：{{item.example_sentence}}</text></view>
         <view class="detail-line"><text>例句中文：{{item.example_translation}}</text></view>
-        <view class="detail-line"><text>intervalIndex：{{item.intervalIndex}}</text></view>
         <view class="detail-line"><text>nextReview：{{item.formattedNextReview}}</text></view>
       </view>
     </block>
