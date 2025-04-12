@@ -51,6 +51,21 @@ Page({
       nextReview: Date.now()
     }));
     let wordList = wx.getStorageSync(app.globalData.STORAGE_KEY) || [];
+    
+    // 过滤掉已存在的单词（以 word 字段为唯一标识）
+    const existingWords = new Set(wordList.map(item => item.word));
+    words = words.filter(item => !existingWords.has(item.word));
+
+    // 如果没有新单词可导入，直接提示并返回
+    if (words.length === 0) {
+        wx.showToast({
+        title: 'No new words to import',
+        icon: 'none'
+        });
+        this.setData({ jsonText: "" });
+        return;
+    }
+    
     wordList = wordList.concat(words);
     wx.setStorageSync(app.globalData.STORAGE_KEY, wordList);
     wx.showToast({
