@@ -73,24 +73,25 @@
     gap: 8px;
   }
   
-  .detail-btn {
+  .detail-btn, .toggle-btn, .delete-btn {
     font-size: 12px;
     padding: 4px 6px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+  
+.detail-btn {
     background-color: #f0ad4e;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-  }
+}
   
-  .toggle-btn {
-    font-size: 12px;
-    padding: 4px 6px;
+.toggle-btn {
     background-color: #0081ff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-  }
+}
   
+.delete-btn {
+    background-color: #ff4d4d; /* 删除按钮红色 */
+}
   .details {
     width: 100%;
     padding: 6px 12px;

@@ -69,5 +69,22 @@ Page({
     wx.setStorageSync(app.globalData.STORAGE_KEY, updatedList);
     // 刷新页面数据
     this.loadWordList();
+  },
+  // 删除单词
+  deleteWord(e) {
+    const wordKey = e.currentTarget.dataset.word;
+    const updatedList = this.data.wordList.filter(item => item.word !== wordKey);
+    // 更新 storage
+    wx.setStorageSync(app.globalData.STORAGE_KEY, updatedList);
+    // 计算未掌握单词数量
+    const unmasteredCount = updatedList.filter(item => !item.mastered).length;
+    // 更新页面数据
+    this.setData({ wordList: updatedList, unmasteredCount });
+    // 提示用户
+    wx.showToast({
+      title: 'Word deleted',
+      icon: 'success',
+      duration: 2000
+    });
   }
 });

@@ -23,6 +23,9 @@
           <button data-word="{{item.word}}" bindtap="toggleMastered" class="toggle-btn">
             Strange
           </button>
+          <button data-word="{{item.word}}" bindtap="deleteWord" class="delete-btn">
+            Delete
+          </button>
         </view>
       </view>
       <!-- 展开详情区域 -->
