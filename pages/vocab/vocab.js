@@ -2,7 +2,8 @@ const app = getApp();
 
 Page({
   data: {
-    wordList: []
+    wordList: [],
+    unmasteredCount: 0 // 未掌握单词数量
   },
   onLoad() {
     this.loadWordList();
@@ -20,7 +21,9 @@ Page({
       ...item,
       expanded: item.expanded || false
     }));
-    this.setData({ wordList });
+    // 计算未掌握单词数量
+    const unmasteredCount = wordList.filter(item => !item.mastered).length;
+    this.setData({ wordList, unmasteredCount });;
   },
   // 展开/收起详情
   toggleDetails(e) {

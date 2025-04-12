@@ -1,6 +1,7 @@
 <view class="container">
   <view class="header">
-    <text class="title">Thesaurus</text>
+    <text class="title">{{wordList.length}} words <text class="highlight-unmastered">{{unmasteredCount}} unmastered</text>
+    </text>
   </view>
   <view class="list">
     <block wx:for="{{wordList}}" wx:key="word">

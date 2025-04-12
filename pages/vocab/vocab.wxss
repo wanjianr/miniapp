@@ -7,8 +7,8 @@
   .header {
     padding: 8px;
     text-align: center;
-    background-color: #0081ff;
-    color: #fff;
+    background-color: #ebf5ff;
+    color: rgb(15, 13, 13);
     border-radius: 4px;
     margin-bottom: 8px;
   }
@@ -18,6 +18,12 @@
     font-weight: bold;
   }
   
+  /* 新增：未掌握单词数量的样式 */
+.highlight-unmastered {
+    color: #ff5722; /* 红色 */
+    font-weight: bold;
+}
+
   .list {
     margin: 0;
     padding: 0;
