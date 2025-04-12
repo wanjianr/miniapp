@@ -3,7 +3,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #f9f9f9;
   }
-  
+    
   .header {
     padding: 8px;
     text-align: center;
@@ -12,23 +12,23 @@
     border-radius: 4px;
     margin-bottom: 8px;
   }
-  
+    
   .title {
     font-size: 16px;
     font-weight: bold;
   }
-  
+    
   /* 新增：未掌握单词数量的样式 */
-.highlight-unmastered {
+  .highlight-unmastered {
     color: #ff5722; /* 红色 */
     font-weight: bold;
-}
-
+  }
+  
   .list {
     margin: 0;
     padding: 0;
   }
-  
+    
   .list-item {
     display: flex;
     flex-direction: row;
@@ -36,62 +36,58 @@
     padding: 6px 8px;
     border-bottom: 1px solid #e0e0e0;
   }
-  
+    
   .list-item.mastered {
     background-color: #e8f5e9;
   }
-  
+    
   .left-part {
     display: flex;
     align-items: center;
     flex: 0 0 120px;  /* 固定宽度保证左侧对齐 */
   }
-  
+    
   .index {
     margin-right: 4px;
     font-size: 13px;
     color: #333;
   }
-  
+    
   .word {
     width: 200rpx;  /* 固定宽度，防止内容变动时影响对齐 */
     font-weight: bold;
     flex-shrink: 0;
   }
-
+  
   .mid-part {
     flex: 1;
     padding: 0 8px;
     font-size: 12px;
     color: #555;
   }
-  
+    
   .right-part {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
     gap: 8px;
   }
-  
-  .detail-btn, .toggle-btn, .delete-btn {
+    
+  .toggle-btn, .delete-btn {
     font-size: 12px;
     padding: 4px 6px;
     color: #fff;
     border: none;
     border-radius: 3px;
-}
-  
-.detail-btn {
-    background-color: #f0ad4e;
-}
-  
-.toggle-btn {
+  }
+    
+  .toggle-btn {
     background-color: #0081ff;
-}
-  
-.delete-btn {
+  }
+    
+  .delete-btn {
     background-color: #ff4d4d; /* 删除按钮红色 */
-}
+  }
   .details {
     width: 100%;
     padding: 6px 12px;
@@ -101,8 +97,7 @@
     border-left: 2px solid #0081ff;
     margin-top: 2px;
   }
-  
+    
   .detail-line {
     margin-bottom: 2px;
   }
-  

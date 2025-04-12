@@ -1,34 +1,26 @@
 <view class="container">
   <view class="header">
-    <text class="title">{{wordList.length}} words <text class="highlight-unmastered">{{unmasteredCount}} unmastered</text>
-    </text>
+    <text class="title">{{wordList.length}} words <text class="highlight-unmastered">{{unmasteredCount}} unmastered</text></text>
   </view>
   <view class="list">
     <block wx:for="{{wordList}}" wx:key="word">
-      <view class="list-item {{item.mastered ? 'mastered' : ''}}">
-        <!-- 左侧：序号 + 单词 -->
+      <view class="list-item {{item.mastered ? 'mastered' : ''}}" bindtap="toggleDetails" data-word="{{item.word}}">
         <view class="left-part">
           <text class="index">{{index + 1}}.</text>
           <text class="word">{{item.word}}</text>
         </view>
-        <!-- 中间：中文释义 -->
         <view class="mid-part">
           <text class="translation">{{item.translation}}</text>
         </view>
-        <!-- 右侧：操作按钮 -->
         <view class="right-part">
-          <button data-word="{{item.word}}" bindtap="toggleDetails" class="detail-btn">
-            Detail
-          </button>
-          <button data-word="{{item.word}}" bindtap="toggleMastered" class="toggle-btn">
+          <button data-word="{{item.word}}" catchtap="toggleMastered" class="toggle-btn">
             Strange
           </button>
-          <button data-word="{{item.word}}" bindtap="deleteWord" class="delete-btn">
+          <button data-word="{{item.word}}" catchtap="deleteWord" class="delete-btn">
             Delete
           </button>
         </view>
       </view>
-      <!-- 展开详情区域 -->
       <view wx:if="{{item.expanded}}" class="details">
         <view class="detail-line"><text>词性：{{item.part_of_speech}}</text></view>
         <view class="detail-line"><text>音标：{{item.phonetic}}</text></view>
