@@ -31,7 +31,27 @@ Page({
       }
       return item;
     });
-    this.setData({ wordList: updatedList });
+    // 格式化 nextReview
+    const formattedWordList = updatedList.map(item => ({
+        ...item,
+        formattedNextReview: this.formatDateTime(item.nextReview)
+      }));
+    this.setData({ wordList: formattedWordList });
+  },
+
+  // 格式化时间戳
+  formatDateTime(timestamp) {
+    if (!timestamp || isNaN(timestamp)) {
+      return '无效时间';
+    }
+    const date = new Date(timestamp);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hour = String(date.getHours()).padStart(2, '0');
+    const minute = String(date.getMinutes()).padStart(2, '0');
+    const second = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
   },
   // 切换掌握状态
   toggleMastered(e) {
