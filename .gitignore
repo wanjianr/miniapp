@@ -3,4 +3,4 @@ dist/
 temp.txt
 project.config.json
 miniprogram_npm/
-
+config.js

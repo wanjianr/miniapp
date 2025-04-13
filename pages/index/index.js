@@ -1,13 +1,14 @@
 const app = getApp();
+const config = require("../../config.js"); // 引入配置文件
 
 Page({
   data: {
-    jsonText: ""
+    jsonText: "",
+    isLoading: false, // 显示生成过程的加载状态
   },
   // 单个单词录入
   onSingleSubmit(e) {
     const formData = e.detail.value;
-    // 新录入的单词数据添加艾宾浩斯复习相关字段
     const newWord = {
       ...formData,
       mastered: false,
@@ -21,11 +22,6 @@ Page({
       title: '录入成功',
       icon: 'success'
     });
-    // 可选择清空表单或跳转至其他页面
-  },
-  // 绑定批量导入 textarea 的输入
-  onJsonInput(e) {
-    this.setData({ jsonText: e.detail.value });
   },
   // 批量导入 JSON 文本
   onBatchImport() {
@@ -43,37 +39,91 @@ Page({
       });
       return;
     }
-    // 给每个单词增加复习相关字段
-    words = words.map(item => ({
+    words = this.initializeWords(words);
+    this.saveWords(words);
+  },
+  // 初始化单词的额外字段
+  initializeWords(words) {
+    return words.map(item => ({
       ...item,
       mastered: false,
       intervalIndex: 0,
       nextReview: Date.now()
     }));
+  },
+  // 保存单词到本地存储
+  saveWords(newWords) {
     let wordList = wx.getStorageSync(app.globalData.STORAGE_KEY) || [];
-    
-    // 过滤掉已存在的单词（以 word 字段为唯一标识）
     const existingWords = new Set(wordList.map(item => item.word));
-    words = words.filter(item => !existingWords.has(item.word));
-
-    // 如果没有新单词可导入，直接提示并返回
-    if (words.length === 0) {
-        wx.showToast({
+    const filteredWords = newWords.filter(item => !existingWords.has(item.word));
+    if (filteredWords.length === 0) {
+      wx.showToast({
         title: 'No new words to import',
         icon: 'none'
-        });
-        this.setData({ jsonText: "" });
-        return;
+      });
+      this.setData({ jsonText: "" });
+      return;
     }
-    
-    wordList = wordList.concat(words);
+    wordList = wordList.concat(filteredWords);
     wx.setStorageSync(app.globalData.STORAGE_KEY, wordList);
     wx.showToast({
       title: '批量录入成功',
       icon: 'success'
     });
-    // 清空文本框
     this.setData({ jsonText: "" });
+  },
+  // 新增：生成单词
+  onGenerateWords() {
+    const geminiKey = config.geminiKey;
+
+    if (!geminiKey) {
+      wx.showToast({
+        title: 'API 密钥未配置',
+        icon: 'none'
+      });
+      return;
+    }
+    this.setData({ isLoading: true }); // 显示加载状态
+    wx.request({
+      url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`,
+      method: "POST",
+      header: {
+        "Content-Type": "application/json"
+      },
+      data: {
+        contents: [{
+          parts: [{ text: "Generate 20 IELTS vocabulary words in the following format：[{\"word\":\"abundant\",\"part_of_speech\":\"adj.\",\"phonetic\":\"[ əˈbʌndənt ]\",\"translation\":\"大量的；丰富的\",\"example_sentence\":\"Water is abundant in this region.\",\"example_translation\":\"这个地区水资源丰富。\"}]"}]
+        }]
+      },
+      success: (res) => {
+        try {
+          // 解析 API 响应结果
+          const rawText = res.data.candidates[0].content.parts[0].text;
+          const jsonMatch = rawText.match(/```json\n([\s\S]*?)\n```/);
+          if (jsonMatch && jsonMatch[1]) {
+            const words = JSON.parse(jsonMatch[1]);
+            const initializedWords = this.initializeWords(words);
+            this.saveWords(initializedWords);
+          } else {
+            throw new Error("无法解析生成结果");
+          }
+        } catch (err) {
+          wx.showToast({
+            title: '生成单词解析失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '生成单词失败',
+          icon: 'none'
+        });
+      },
+      complete: () => {
+        this.setData({ isLoading: false }); // 隐藏加载状态
+      }
+    });
   },
   // 跳转到查看词库页面
   goToVocab() {

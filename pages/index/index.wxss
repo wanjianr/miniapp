@@ -27,4 +27,12 @@
     background-color: #00a65a;
     margin-top: 15px;
   }
+  .generate-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #852c58;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+  }
   

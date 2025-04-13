@@ -14,4 +14,13 @@
     <button bindtap="goToVocab">Vocabulary List</button>
     <button bindtap="goToStudy">Vocabulary Study</button>
   </view>
+    <!-- 添加生成单词按钮 -->
+    <button 
+    bindtap="onGenerateWords" 
+    loading="{{isLoading}}" 
+    disabled="{{isLoading}}" 
+    class="generate-button"
+  >
+    {{isLoading ? "生成中..." : "生成雅思词汇"}}
+  </button>
 </view>
