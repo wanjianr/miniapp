@@ -33,7 +33,7 @@
 /* 内容展示区域 */
 .content-area {
      /* flex: 1; 弹性盒子布局中的伸缩比例，使该区域占据剩余空间 */
-    height: 500rpx;
+    height: 600rpx;
     width: 90%; /* 宽度为父元素宽度的 90% */
     background-color: #fff; /* 背景颜色为白色 */
     border-radius: 10rpx; /* 圆角半径为 10rpx */
@@ -54,12 +54,14 @@
     font-weight: bold;
     color: #333;
     text-align: center;
+    font-family: Georgia, "Times New Roman", serif; /* 优雅字体 */
   }
   
   .pronunciation {
-    font-size: 35rpx;
+    font-size: 45rpx;
     color: rgb(119, 36, 36);
     text-align: center;
+    font-family: Georgia, "Times New Roman", serif; /* 优雅字体 */
   }
   
   .definition {
@@ -69,11 +71,16 @@
   }
   
   .example-sentence {
-    font-size: 35rpx;
-    color: rgb(0, 0, 0);
-    text-align: left;
-  }
-  
+    font-size: 43rpx; /* 字体大小 */
+    color: rgb(50, 50, 50); /* 柔和的深灰色 */
+    text-align: left; /* 左对齐 */
+    font-style: italic; /* 设置斜体 */
+    font-family: Georgia, "Times New Roman", serif; /* 优雅字体 */
+    line-height: 1.6; /* 增加行高 */
+    letter-spacing: 1px; /* 增加字间距 */
+    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+}
+
   .example-translation {
     font-size: 35rpx;
     color: rgb(163, 162, 162);
@@ -103,7 +110,7 @@
     justify-content: space-between;
     gap: 10rpx;
     position: relative; /* 相对定位 */
-    top: 400rpx; /* 向下调整按钮位置 */
+    top: 350rpx; /* 向下调整按钮位置 */
   }
   
   button {
@@ -178,7 +185,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10rpx;
+    margin-top: -20rpx;
     border-radius: 50%; /* 圆形关键，50% 表示完全圆形 */
     transition: all 0.3s; /* 平滑过渡效果 */  }
   
@@ -204,7 +211,7 @@
     width: 100%;
     display: flex;
     justify-content: center;   /* 居中排列 */
-    margin-top: -50rpx;          /* 根据需要调整与上面内容的间距 */
+    margin-top: -55rpx;          /* 根据需要调整与上面内容的间距 */
   }
 
   

@@ -92,7 +92,7 @@ Page({
       },
       data: {
         contents: [{
-          parts: [{ text: "Generate 20 IELTS vocabulary words in the following format：[{\"word\":\"abundant\",\"part_of_speech\":\"adj.\",\"phonetic\":\"[ əˈbʌndənt ]\",\"translation\":\"大量的；丰富的\",\"example_sentence\":\"Water is abundant in this region.\",\"example_translation\":\"这个地区水资源丰富。\"}]"}]
+          parts: [{ text: "Generate 20 IELTS vocabulary words in the following format：[{\"word\":\"abundant\",\"part_of_speech\":\"adj.\",\"phonetic\":\"/əˈbʌndənt/\",\"translation\":\"大量的；丰富的\",\"example_sentence\":\"Water is abundant in this region.\",\"example_translation\":\"这个地区水资源丰富。\"}]"}]
         }]
       },
       success: (res) => {
